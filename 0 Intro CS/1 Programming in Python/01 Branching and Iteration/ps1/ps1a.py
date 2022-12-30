@@ -1,3 +1,6 @@
+from os import system as sys
+sys("cls")
+
 annual_salary = float(input("annual salary: "))
 portion_saved = float(input("percent of salary to save in decimal: "))
 total_cost = float(input("cost of dream home: "))
