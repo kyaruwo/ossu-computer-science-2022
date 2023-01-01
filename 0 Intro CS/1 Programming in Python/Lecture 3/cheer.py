@@ -19,5 +19,7 @@ for c in word:
 
 print("What does that spell?")
 
-for i in range(times):
-    print(word, "!!!")
+# for i in range(times):
+#     print(word, "!!!")
+
+print((word + " !!!\n")*times)
