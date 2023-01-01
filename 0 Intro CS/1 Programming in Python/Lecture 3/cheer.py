@@ -1,3 +1,6 @@
+from os import system as sys
+sys("cls")
+
 an_letters = "aefhilmnorsxAEFHILMNORSX"
 word = input("I will cheer for you! Enter a word: ")
 times = int(input("Enthusiasm level (1-10): "))
