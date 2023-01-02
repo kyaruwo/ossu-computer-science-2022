@@ -17,10 +17,9 @@ for guess in range(acube+1):
 
 print(f"num_guesses : {num_guesses}")
 
-if cube != acube:
-    guess = -guess
-
-if guess**3 != cube:
+if guess**3 != acube:
     print(f"{cube} is not a perfect cube")
 else:
+    if cube != acube:
+        guess = -guess
     print(f"cube root of {cube} is {guess}")
