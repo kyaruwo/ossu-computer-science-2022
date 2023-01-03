@@ -6,24 +6,28 @@ def wall():
     print("*"*wall_length+"\n"+"*"*wall_length)
 
 
-move_count = 1
+move_count = 0
 while True:
     sys("cls")
     print("You are in the Lost Forest.")
 
-    if move_count != 1:
+    if move_count > 1:
         print("*"*26)
         print("****          ************")
         print("(╯°□°）╯︵ ┻━┻")
-    else:
+    elif move_count == 1:
         wall()
         print("(* ￣︿￣)")
+    else:
+        wall()
+        print("(￣︶￣)")
 
     wall()
     direction = input("Go left or nah ? ")
+    move_count += 1
+
     if direction == "left":
         break
-    move_count += 1
 
 sys("cls")
 print("\n\n\n(￣︶￣)\n\n")
