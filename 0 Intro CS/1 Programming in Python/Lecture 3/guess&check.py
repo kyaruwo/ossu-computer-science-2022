@@ -18,6 +18,7 @@ print(f"num_guesses : {guess}")
 if guess**3 != acube:
     print(f"{cube} is not a perfect cube")
 else:
+    # imaginary number
     if cube != acube:
-        guess = -guess
+        guess = str(guess)+"i"
     print(f"cube root of {cube} is {guess}")

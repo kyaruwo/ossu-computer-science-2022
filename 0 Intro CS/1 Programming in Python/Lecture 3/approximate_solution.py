@@ -21,6 +21,7 @@ print(f"num_guesses : {num_guesses}")
 if abs(guess**3 - acube) >= epsilon:
     print(f"Failed on cube root of {cube}")
 else:
+    # imaginary number
     if cube != acube:
-        guess = -guess
+        guess = str(guess)+"i"
     print(f"{guess} is close to the cube root of {cube}")
