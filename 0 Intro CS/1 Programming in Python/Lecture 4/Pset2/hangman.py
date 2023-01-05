@@ -10,7 +10,7 @@ except:
 # Problem Set 2, hangman.py
 # Name: kyaruwo
 # Collaborators: me
-# Time spent:
+# Time spent: 2023/01/05 - 2023/01/??
 
 # Hangman Game
 # -----------------------------------
@@ -70,7 +70,11 @@ def is_word_guessed(secret_word, letters_guessed):
       False otherwise
     '''
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    for c in secret_word:
+        if c not in letters_guessed:
+            return False
+    else:
+        return True
 
 
 def get_guessed_word(secret_word, letters_guessed):
@@ -81,7 +85,13 @@ def get_guessed_word(secret_word, letters_guessed):
       which letters in secret_word have been guessed so far.
     '''
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    guessed_word = ""
+    for c in secret_word:
+        if c not in letters_guessed:
+            guessed_word += "_ "
+        else:
+            guessed_word += c
+    return guessed_word
 
 
 def get_available_letters(letters_guessed):
@@ -91,7 +101,10 @@ def get_available_letters(letters_guessed):
       yet been guessed.
     '''
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    available_letters = string.ascii_lowercase
+    for c in letters_guessed:
+        available_letters = available_letters.replace(c, "")
+    return available_letters
 
 
 def hangman(secret_word):
