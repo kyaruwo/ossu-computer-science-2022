@@ -113,7 +113,7 @@ def hangman(secret_word):
 
     Starts up an interactive game of Hangman.
 
-    * At the start of the game, let the user know how many 
+    * At the start of the game, let the user know how many
       letters the secret_word contains and how many guesses s/he starts with.
 
     * The user should start with 6 guesses
@@ -124,16 +124,71 @@ def hangman(secret_word):
     * Ask the user to supply one guess per round. Remember to make
       sure that the user puts in a letter!
 
-    * The user should receive feedback immediately after each guess 
+    * The user should receive feedback immediately after each guess
       about whether their guess appears in the computer's word.
 
-    * After each guess, you should display to the user the 
+    * After each guess, you should display to the user the
       partially guessed word so far.
 
     Follows the other limitations detailed in the problem write-up.
     '''
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+
+    warnings_left = 3
+    guesses_remaining = 6
+    letters_guessed = ""
+
+    print("Welcome to the game Hangman!")
+    print(f"I am thinking of a word that is {len(secret_word)} letters long.")
+    print(f"You have {warnings_left} warnings left.")
+
+    while True:
+        print("-------------")
+
+        if is_word_guessed(secret_word, letters_guessed):
+            print("Congratulations, you won!")
+            print(
+                f"Your total score for this game is: {guesses_remaining*len(set(secret_word))}")
+            break
+        if guesses_remaining == 0:
+            print(
+                f"Sorry, you ran out of guesses. The word was {secret_word}.")
+            break
+
+        print(f"You have {guesses_remaining} guesses left.")
+        print(f"Available letters: {get_available_letters(letters_guessed)}")
+        letter = input("Please guess a letter: ").lower()
+
+        guessed_word = get_guessed_word(secret_word, letters_guessed)
+
+        if warnings_left > 0:
+            swl = f"You have {warnings_left-1} warnings left: {guessed_word}"
+        else:
+            swl = f"You have no warnings left\nso you lose one guess: {guessed_word}"
+
+        if letter not in string.ascii_lowercase or letter == "":
+            print(f"Oops! That is not a valid letter. {swl}")
+            warnings_left -= 1
+            if warnings_left < 0:
+                guesses_remaining -= 1
+            continue
+        if letter in letters_guessed:
+            print(f"Oops! You've already guessed that letter. {swl}")
+            warnings_left -= 1
+            if warnings_left < 0:
+                guesses_remaining -= 1
+            continue
+
+        letters_guessed += letter
+        guessed_word = get_guessed_word(secret_word, letters_guessed)
+        if letter in secret_word:
+            print(f"Good guess: {guessed_word}")
+        else:
+            print(f"Oops! That letter is not in my word: {guessed_word}")
+            if letter in "aeiou":
+                guesses_remaining -= 2
+            else:
+                guesses_remaining -= 1
 
 
 # When you've completed your hangman function, scroll down to the bottom
@@ -214,8 +269,11 @@ if __name__ == "__main__":
     # To test part 2, comment out the pass line above and
     # uncomment the following two lines.
 
-    secret_word = choose_word(wordlist)
-    hangman(secret_word)
+    # secret_word = choose_word(wordlist)
+    # hangman(secret_word)
+
+    # temp
+    hangman("tact")
 
 ###############
 
