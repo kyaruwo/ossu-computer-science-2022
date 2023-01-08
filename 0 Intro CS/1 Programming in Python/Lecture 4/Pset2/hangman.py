@@ -107,6 +107,29 @@ def get_available_letters(letters_guessed):
     return available_letters
 
 
+#
+
+
+def is_letter_valid(letter, letters_guessed, swl):
+    if letter not in string.ascii_lowercase or letter == "":
+        print(f"Oops! That is not a valid letter. {swl}")
+        return True
+    if letter in letters_guessed:
+        print(f"Oops! You've already guessed that letter. {swl}")
+        return True
+    return False
+
+
+def get_swl(guessed_word, warnings_left):
+    if warnings_left > 0:
+        return f"You have {warnings_left-1} warnings left: {guessed_word}"
+    else:
+        return f"You have no warnings left\nso you lose one guess: {guessed_word}"
+
+
+#
+
+
 def hangman(secret_word):
     '''
     secret_word: string, the secret word to guess.
@@ -160,20 +183,9 @@ def hangman(secret_word):
         letter = input("Please guess a letter: ").lower()
 
         guessed_word = get_guessed_word(secret_word, letters_guessed)
+        swl = get_swl(guessed_word, warnings_left)
 
-        if warnings_left > 0:
-            swl = f"You have {warnings_left-1} warnings left: {guessed_word}"
-        else:
-            swl = f"You have no warnings left\nso you lose one guess: {guessed_word}"
-
-        if letter not in string.ascii_lowercase or letter == "":
-            print(f"Oops! That is not a valid letter. {swl}")
-            warnings_left -= 1
-            if warnings_left < 0:
-                guesses_remaining -= 1
-            continue
-        if letter in letters_guessed:
-            print(f"Oops! You've already guessed that letter. {swl}")
+        if not is_letter_valid(letter, letters_guessed, swl):
             warnings_left -= 1
             if warnings_left < 0:
                 guesses_remaining -= 1
@@ -181,6 +193,7 @@ def hangman(secret_word):
 
         letters_guessed += letter
         guessed_word = get_guessed_word(secret_word, letters_guessed)
+
         if letter in secret_word:
             print(f"Good guess: {guessed_word}")
         else:
