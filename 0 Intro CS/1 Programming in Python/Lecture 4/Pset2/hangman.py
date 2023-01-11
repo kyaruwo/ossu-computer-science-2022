@@ -113,11 +113,11 @@ def get_available_letters(letters_guessed):
 def is_letter_valid(letter, letters_guessed, swl):
     if letter not in string.ascii_lowercase or letter == "":
         print(f"Oops! That is not a valid letter. {swl}")
-        return True
+        return False
     if letter in letters_guessed:
         print(f"Oops! You've already guessed that letter. {swl}")
-        return True
-    return False
+        return False
+    return True
 
 
 def get_swl(guessed_word, warnings_left):
@@ -183,9 +183,8 @@ def hangman(secret_word):
         letter = input("Please guess a letter: ").lower()
 
         guessed_word = get_guessed_word(secret_word, letters_guessed)
-        swl = get_swl(guessed_word, warnings_left)
 
-        if not is_letter_valid(letter, letters_guessed, swl):
+        if not is_letter_valid(letter, letters_guessed, get_swl(guessed_word, warnings_left)):
             warnings_left -= 1
             if warnings_left < 0:
                 guesses_remaining -= 1
