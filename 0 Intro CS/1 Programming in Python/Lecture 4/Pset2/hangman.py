@@ -183,8 +183,9 @@ def hangman(secret_word):
         letter = input("Please guess a letter: ").lower()
 
         guessed_word = get_guessed_word(secret_word, letters_guessed)
+        swl = get_swl(guessed_word, warnings_left)
 
-        if not is_letter_valid(letter, letters_guessed, get_swl(guessed_word, warnings_left)):
+        if not is_letter_valid(letter, letters_guessed, swl):
             warnings_left -= 1
             if warnings_left < 0:
                 guesses_remaining -= 1
