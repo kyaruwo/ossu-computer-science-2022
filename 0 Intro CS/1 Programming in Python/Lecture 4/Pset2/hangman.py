@@ -182,8 +182,8 @@ def hangman(secret_word):
         print(f"Available letters: {get_available_letters(letters_guessed)}")
         letter = input("Please guess a letter: ").lower()
 
-        guessed_word = get_guessed_word(secret_word, letters_guessed)
-        swl = get_swl(guessed_word, warnings_left)
+        swl = get_swl(get_guessed_word(secret_word, letters_guessed),
+                      warnings_left)
 
         if not is_letter_valid(letter, letters_guessed, swl):
             warnings_left -= 1
@@ -286,7 +286,7 @@ if __name__ == "__main__":
     # hangman(secret_word)
 
     # temp
-    hangman("tact")
+    hangman("else")
 
 ###############
 
