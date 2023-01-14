@@ -1,7 +1,8 @@
 # vscode my beloved
 try:
     import os
-    os.system("cls")
+    def clear(): os.system("cls")
+    clear()
     os.chdir("0 Intro CS/1 Programming in Python/Lecture 4/Pset2")
 except:
     pass
@@ -39,6 +40,8 @@ def load_words():
     # wordlist: list of strings
     wordlist = line.split()
     print("  ", len(wordlist), "words loaded.")
+    os.system("pause")
+    clear()
     return wordlist
 
 
@@ -90,7 +93,7 @@ def get_guessed_word(secret_word, letters_guessed):
         if c not in letters_guessed:
             guessed_word += "_ "
         else:
-            guessed_word += c
+            guessed_word += c+" "
     return guessed_word
 
 
@@ -166,7 +169,7 @@ def hangman(secret_word):
     print(f"You have {warnings_left} warnings left.")
 
     while True:
-        print("-------------")
+        print("-"*48)
 
         if is_word_guessed(secret_word, letters_guessed):
             print("Congratulations, you won!")
@@ -181,6 +184,8 @@ def hangman(secret_word):
         print(f"You have {guesses_remaining} guesses left.")
         print(f"Available letters: {get_available_letters(letters_guessed)}")
         letter = input("Please guess a letter: ").lower()
+
+        clear()
 
         swl = get_swl(get_guessed_word(secret_word, letters_guessed),
                       warnings_left)
@@ -282,11 +287,12 @@ if __name__ == "__main__":
     # To test part 2, comment out the pass line above and
     # uncomment the following two lines.
 
-    # secret_word = choose_word(wordlist)
-    # hangman(secret_word)
+    secret_word = choose_word(wordlist)
+    hangman(secret_word)
 
     # temp
-    hangman("else")
+    # hangman("tact")
+    # hangman("else")
 
 ###############
 
