@@ -72,7 +72,6 @@ def is_word_guessed(secret_word, letters_guessed):
     returns: boolean, True if all the letters of secret_word are in letters_guessed;
       False otherwise
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
     for c in secret_word:
         if c not in letters_guessed:
             return False
@@ -87,7 +86,6 @@ def get_guessed_word(secret_word, letters_guessed):
     returns: string, comprised of letters, underscores (_), and spaces that represents
       which letters in secret_word have been guessed so far.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
     guessed_word = ""
     for c in secret_word:
         if c not in letters_guessed:
@@ -103,14 +101,13 @@ def get_available_letters(letters_guessed):
     returns: string (of letters), comprised of letters that represents which letters have not
       yet been guessed.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
     available_letters = string.ascii_lowercase
     for c in letters_guessed:
         available_letters = available_letters.replace(c, "")
     return available_letters
 
 
-#
+# -----------------------------------
 
 
 def is_letter_valid(letter, letters_guessed, swl):
@@ -130,7 +127,7 @@ def get_swl(guessed_word, warnings_left):
         return f"You have no warnings left\nso you lose one guess: {guessed_word}"
 
 
-#
+# -----------------------------------
 
 
 def hangman(secret_word):
@@ -158,7 +155,6 @@ def hangman(secret_word):
 
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
 
     warnings_left = 3
     guesses_remaining = 6
@@ -227,7 +223,6 @@ def match_with_gaps(my_word, other_word):
         _ , and my_word and other_word are of the same length;
         False otherwise:
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
     my_word = my_word.replace(" ", "")
 
     if len(my_word) != len(other_word):
@@ -255,10 +250,10 @@ def show_possible_matches(my_word):
              that has already been revealed.
 
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
 
     matchlist = ""
-    for word in wordlist:  # optimize using bisection search
+
+    for word in wordlist:
         if match_with_gaps(my_word, word):
             matchlist += word+" "
 
@@ -295,7 +290,7 @@ def hangman_with_hints(secret_word):
 
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
+
     warnings_left = 3
     guesses_remaining = 6
     letters_guessed = ""
@@ -356,28 +351,14 @@ def hangman_with_hints(secret_word):
 # these two lines and run this file to test!
 # Hint: You might want to pick your own secret_word while you're testing.
 
+
 if __name__ == "__main__":
-    # pass
+    pass
 
-    # To test part 2, comment out the pass line above and
-    # uncomment the following two lines.
-
+    # part 2
     # secret_word = choose_word(wordlist)
     # hangman(secret_word)
 
-    # temp
-    # hangman("tact")
-    # hangman("else")
-
-    ###############
-
-    # To test part 3 re-comment out the above lines and
-    # uncomment the following two lines.
-
+    # part 3
     secret_word = choose_word(wordlist)
     hangman_with_hints(secret_word)
-
-    # temp
-    # hangman_with_hints("tact")
-    # hangman_with_hints("else")
-    # hangman_with_hints("apple")
