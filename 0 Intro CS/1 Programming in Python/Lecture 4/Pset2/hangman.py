@@ -11,7 +11,7 @@ except:
 # Problem Set 2, hangman.py
 # Name: kyaruwo
 # Collaborators: me
-# Time spent: 2023/01/05 - 2023/01/??
+# Time spent: 2023/01/05 - 2023/01/14
 
 # Hangman Game
 # -----------------------------------
