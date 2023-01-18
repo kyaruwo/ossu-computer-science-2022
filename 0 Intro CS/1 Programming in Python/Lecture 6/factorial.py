@@ -15,3 +15,14 @@ def recursive_factorial(x):
 
 
 print(recursive_factorial(4))
+
+
+# iterative
+def factorial_iter(n):
+    product = 1
+    for i in range(1, n+1):
+        product *= i
+    return product
+
+
+print(factorial_iter(4))
