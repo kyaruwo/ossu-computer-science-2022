@@ -66,11 +66,11 @@ beatles = lyrics_to_frequencies(she_loves_you)
 
 
 def most_common_words(freqs):
-    best = max(freqs.values())
     words = []
-    for k in freqs:
-        if freqs[k] == best:
-            words.append(k)
+    best = max(freqs.values())
+    for (word, freq) in freqs.items():
+        if freq == best:
+            words.append(word)
     return (words, best)
 
 
