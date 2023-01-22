@@ -1,9 +1,20 @@
 def isPalindrome(word):
+    from string import ascii_lowercase as letters
+    word = "".join(c for c in word.lower() if c in letters)
+    return word == word[::-1]
+
+
+# 74 steps
+print(isPalindrome("Able was I, ere I saw Elba"))
+
+
+def isPalindrome(word):
     word = word.lower().translate(
         {ord(c): None for c in " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"})
     return word == word[::-1]
 
 
+# 43 steps
 print(isPalindrome("Able was I, ere I saw Elba"))
 
 
@@ -31,4 +42,5 @@ def recursive_isPalindrome(word):
     return isPalindrome(parseString(word))
 
 
+# 124 steps
 print(recursive_isPalindrome("Able was I, ere I saw Elba"))
