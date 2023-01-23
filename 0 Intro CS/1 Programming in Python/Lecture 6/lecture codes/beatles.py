@@ -54,10 +54,13 @@ she_loves_you = [
 def lyrics_to_frequencies(lyrics):
     frequency_dict = {}
     for word in lyrics:
-        if word not in frequency_dict:
-            frequency_dict[word] = 1
-        else:
-            frequency_dict[word] += 1
+        # if word not in frequency_dict:
+        #     frequency_dict[word] = 1
+        # else:
+        #     frequency_dict[word] += 1
+        #
+        # inspired from PSet3
+        frequency_dict[word] = frequency_dict.get(word, 0) + 1
     return frequency_dict
 
 
