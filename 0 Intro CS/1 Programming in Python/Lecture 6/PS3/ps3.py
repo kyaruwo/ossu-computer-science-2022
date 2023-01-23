@@ -1,3 +1,13 @@
+# vscode my beloved
+try:
+    import os
+    def clear(): os.system("cls")
+    clear()
+    os.chdir("0 Intro CS/1 Programming in Python/Lecture 6/PS3")
+except:
+    pass
+
+
 # 6.0001 Problem Set 3
 #
 # The 6.0001 Word Game
