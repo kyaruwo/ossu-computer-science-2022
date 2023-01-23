@@ -222,8 +222,22 @@ def is_valid_word(word, hand, word_list):
     word_list: list of lowercase strings
     returns: boolean
     """
+    word = word.lower()
+    new_hand = hand.copy()
 
-    pass  # TO DO... Remove this line when you implement this function
+    if word not in word_list:
+        return False
+
+    for letter in word:
+        if letter not in new_hand:
+            return False
+
+        new_hand[letter] -= 1
+
+        if new_hand[letter] == 0:
+            del (new_hand[letter])
+
+    return True
 
 
 #
