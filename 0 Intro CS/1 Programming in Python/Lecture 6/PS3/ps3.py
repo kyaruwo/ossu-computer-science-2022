@@ -197,8 +197,13 @@ def update_hand(hand, word):
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
+    new_hand = hand.copy()
 
-    pass  # TO DO... Remove this line when you implement this function
+    for letter in word.lower():
+        if letter in new_hand:
+            new_hand[letter] -= 1
+
+    return new_hand
 
 
 #
