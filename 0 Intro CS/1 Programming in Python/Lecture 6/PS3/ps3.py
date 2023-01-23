@@ -106,7 +106,7 @@ def get_word_score(word, n):
     word = word.lower()
     wordlen = len(word)
 
-    wordPoints = sum(SCRABBLE_LETTER_VALUES[c] for c in word)
+    wordPoints = sum(SCRABBLE_LETTER_VALUES[letter] for letter in word)
 
     scrabblePoints = (7*wordlen) - 3*(n-wordlen)
 
@@ -134,10 +134,11 @@ def display_hand(hand):
     hand: dictionary (string -> int)
     """
 
-    for letter in hand.keys():
-        for j in range(hand[letter]):
+    for letter, freq in hand.items():
+        for i in range(freq):
             print(letter, end=' ')      # print all on the same line
     print()                              # print an empty line
+
 
 #
 # Make sure you understand how this function works and what it does!
@@ -172,6 +173,7 @@ def deal_hand(n):
 
     return hand
 
+
 #
 # Problem #2: Update a hand by removing letters
 #
@@ -198,6 +200,7 @@ def update_hand(hand, word):
 
     pass  # TO DO... Remove this line when you implement this function
 
+
 #
 # Problem #3: Test word validity
 #
@@ -216,6 +219,7 @@ def is_valid_word(word, hand, word_list):
     """
 
     pass  # TO DO... Remove this line when you implement this function
+
 
 #
 # Problem #5: Playing a hand
@@ -302,6 +306,7 @@ def play_hand(hand, word_list):
 #
 # procedure you will use to substitute a letter in a hand
 #
+
 
 def substitute_hand(hand, letter):
     """ 
