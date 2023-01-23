@@ -103,8 +103,18 @@ def get_word_score(word, n):
     n: int >= 0
     returns: int >= 0
     """
+    word = word.lower()
+    wordlen = len(word)
 
-    pass  # TO DO... Remove this line when you implement this function
+    wordPoints = sum(SCRABBLE_LETTER_VALUES[c] for c in word)
+
+    scrabblePoints = (7*wordlen) - 3*(n-wordlen)
+
+    if scrabblePoints > 1:
+        return wordPoints*scrabblePoints
+    else:
+        return wordPoints*1
+
 
 #
 # Make sure you understand how this function works and what it does!
