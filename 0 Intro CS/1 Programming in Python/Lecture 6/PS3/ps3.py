@@ -241,6 +241,11 @@ def is_valid_word(word, hand, word_list):
 
 
 #
+# Problem #4: Wildcards pg.6
+#
+
+
+#
 # Problem #5: Playing a hand
 #
 
