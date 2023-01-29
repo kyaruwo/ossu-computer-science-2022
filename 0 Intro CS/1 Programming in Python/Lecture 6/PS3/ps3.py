@@ -64,7 +64,6 @@ def get_frequency_dict(sequence):
     sequence: string or list
     return: dictionary
     """
-
     # freqs: dictionary (element_type -> int)
     freq = {}
     for x in sequence:
@@ -133,7 +132,6 @@ def display_hand(hand):
 
     hand: dictionary (string -> int)
     """
-
     for letter, freq in hand.items():
         for i in range(freq):
             print(letter, end=' ')      # print all on the same line
@@ -159,7 +157,6 @@ def deal_hand(n):
     n: int >= 0
     returns: dictionary (string -> int)
     """
-
     hand = {}
     num_vowels = int(math.ceil(n / 3))
 
