@@ -26,7 +26,7 @@ CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
 HAND_SIZE = 7
 
 SCRABBLE_LETTER_VALUES = {
-    'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k': 5, 'l': 1, 'm': 3, 'n': 1, 'o': 1, 'p': 3, 'q': 10, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 4, 'w': 4, 'x': 8, 'y': 4, 'z': 10
+    '*': 0, 'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k': 5, 'l': 1, 'm': 3, 'n': 1, 'o': 1, 'p': 3, 'q': 10, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 4, 'w': 4, 'x': 8, 'y': 4, 'z': 10
 }
 
 # -----------------------------------
@@ -82,10 +82,10 @@ def get_word_score(word, n):
     Returns the score for a word. Assumes the word is a
     valid word.
 
-    You may assume that the input word is always either a string of letters, 
-    or the empty string "". You may not assume that the string will only contain 
-    lowercase letters, so you will have to handle uppercase and mixed case strings 
-    appropriately. 
+    You may assume that the input word is always either a string of letters,
+    or the empty string "". You may not assume that the string will only contain
+    lowercase letters, so you will have to handle uppercase and mixed case strings
+    appropriately.
 
         The score for a word is the product of two components:
 
@@ -160,9 +160,11 @@ def deal_hand(n):
     hand = {}
     num_vowels = int(math.ceil(n / 3))
 
-    for i in range(num_vowels):
+    for i in range(num_vowels - 1):
         x = random.choice(VOWELS)
         hand[x] = hand.get(x, 0) + 1
+
+    hand["*"] = 1
 
     for i in range(num_vowels, n):
         x = random.choice(CONSONANTS)
@@ -183,7 +185,7 @@ def update_hand(hand, word):
     appear in hand should be ignored. Letters that appear in word more times
     than in hand should never result in a negative count; instead, set the
     count in the returned hand to 0 (or remove the letter from the
-    dictionary, depending on how your code is structured). 
+    dictionary, depending on how your code is structured).
 
     Updates the hand: uses up the letters in the given word
     and returns the new hand, without those letters in it.
@@ -191,7 +193,7 @@ def update_hand(hand, word):
     Has no side effects: does not modify hand.
 
     word: string
-    hand: dictionary (string -> int)    
+    hand: dictionary (string -> int)
     returns: dictionary (string -> int)
     """
     new_hand = hand.copy()
@@ -222,7 +224,10 @@ def is_valid_word(word, hand, word_list):
     word = word.lower()
     new_hand = hand.copy()
 
-    if word not in word_list:
+    for c in VOWELS:
+        if word.replace("*", c) in word_list:
+            break
+    else:
         return False
 
     for letter in word:
@@ -248,7 +253,7 @@ def is_valid_word(word, hand, word_list):
 
 
 def calculate_handlen(hand):
-    """ 
+    """
     Returns the length (number of letters) in the current hand.
 
     hand: dictionary (string-> int)
@@ -279,7 +284,7 @@ def play_hand(hand, word_list):
     * The sum of the word scores is displayed when the hand finishes.
 
     * The hand finishes when there are no more unused letters.
-      The user can also finish playing the hand by inputing two 
+      The user can also finish playing the hand by inputing two
       exclamation points (the string '!!') instead of a word.
 
       hand: dictionary (string -> int)
@@ -330,7 +335,7 @@ def play_hand(hand, word_list):
 
 
 def substitute_hand(hand, letter):
-    """ 
+    """
     Allow the user to replace all copies of one letter in the hand (chosen by user)
     with a new letter chosen from the VOWELS and CONSONANTS at random. The new letter
     should be different from user's choice, and should not be any of the letters
@@ -361,7 +366,7 @@ def play_game(word_list):
 
     * Asks the user to input a total number of hands
 
-    * Accumulates the score for each hand into a total score for the 
+    * Accumulates the score for each hand into a total score for the
       entire series
 
     * For each hand, before playing, ask the user if they want to substitute
@@ -371,8 +376,8 @@ def play_game(word_list):
       substitute letters in the future.
 
     * For each hand, ask the user if they would like to replay the hand.
-      If the user inputs 'yes', they will replay the hand and keep 
-      the better of the two scores for that hand.  This can only be done once 
+      If the user inputs 'yes', they will replay the hand and keep
+      the better of the two scores for that hand.  This can only be done once
       during the game. Once the replay option is used, the user should not
       be asked if they want to replay future hands. Replaying the hand does
       not count as one of the total number of hands the user initially
