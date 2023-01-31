@@ -107,7 +107,9 @@ def get_word_score(word, n):
     word = word.lower()
     wordlen = len(word)
 
-    wordPoints = sum(SCRABBLE_LETTER_VALUES[letter] for letter in word)
+    wordPoints = 0
+    for letter in word:
+        wordPoints += SCRABBLE_LETTER_VALUES[letter]
 
     scrabblePoints = (7*wordlen) - 3*(n-wordlen)
 
