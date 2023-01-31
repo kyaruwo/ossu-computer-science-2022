@@ -370,10 +370,7 @@ def get_new_letter(letter):
     letter : string
     returns: new_letter (string)
     """
-    if letter in VOWELS:
-        return random.choice(VOWELS)
-    else:
-        return random.choice(CONSONANTS)
+    return random.choice(string.ascii_lowercase)
 
 
 def substitute_hand(hand, letter):
@@ -410,6 +407,18 @@ def substitute_hand(hand, letter):
     return sub_hand
 
 
+def askYN(question):
+    """
+    question : string
+    input : yes || no
+    returns: Boolean
+    """
+    ans = input(f"{question} ").lower()
+    if ans == "yes":
+        return True
+    return False
+
+
 def play_game(word_list):
     """
     Allow the user to play a series of hands
@@ -440,9 +449,35 @@ def play_game(word_list):
 
     word_list: list of lowercase strings
     """
+    handCount = int(input("Enter total number of hands: ")) + 1
 
-    # TO DO... Remove this line when you implement this function
-    print("play_game not implemented.")
+    hands_score = 0
+    all_hands_score = 0
+
+    sub = 0
+
+    hand = deal_hand(HAND_SIZE)
+    for x in range(handCount):
+        if x > 0:
+            if askYN("Would you like to replay the hand?"):
+                all_hands_score -= hands_score
+            else:
+                hand = deal_hand(HAND_SIZE)
+
+        print("Current Hand:", end=' ')
+        display_hand(hand)
+
+        if sub == 0:
+            if askYN("Would you like to substitute a letter?"):
+                sub += 1
+                letter = input("Which letter would you like to replace: ")
+                hand = substitute_hand(hand, letter)
+
+        hands_score = play_hand(hand, word_list)
+        all_hands_score += hands_score
+
+        print("------------\n")
+    print(f"Total score over all: {all_hands_score}")
 
 
 #
