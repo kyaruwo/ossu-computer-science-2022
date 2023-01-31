@@ -7,3 +7,5 @@
 <a href="https://github.com/kyaruwo/computer-science/blob/master/kyaruwo.md">
 <img alt="Open Source Society University - Computer Science" src="https://img.shields.io/badge/Progress-kyaruwo-violet.svg">
 </a>
+
+<img alt="learning_curve" src="learning_curve.jpeg">
