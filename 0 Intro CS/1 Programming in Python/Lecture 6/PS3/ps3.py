@@ -245,6 +245,8 @@ def is_valid_word(word, hand, word_list):
 #
 # Problem #4: Wildcards pg.6
 #
+# I don't understand how I solved this but it works
+# - kyaruwo
 
 
 #
