@@ -365,6 +365,17 @@ def play_hand(hand, word_list):
 #
 
 
+def get_new_letter(letter):
+    """
+    letter : string
+    returns: new_letter (string)
+    """
+    if letter in VOWELS:
+        return random.choice(VOWELS)
+    else:
+        return random.choice(CONSONANTS)
+
+
 def substitute_hand(hand, letter):
     """
     Allow the user to replace all copies of one letter in the hand (chosen by user)
@@ -387,8 +398,16 @@ def substitute_hand(hand, letter):
     letter: string
     returns: dictionary (string -> int)
     """
+    sub_hand = hand.copy()
 
-    pass  # TO DO... Remove this line when you implement this function
+    while True:
+        new_letter = get_new_letter(letter)
+        if new_letter not in hand:
+            sub_hand[new_letter] = sub_hand[letter]
+            del sub_hand[letter]
+            break
+
+    return sub_hand
 
 
 def play_game(word_list):
