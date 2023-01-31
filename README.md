@@ -8,4 +8,6 @@
 <img alt="Open Source Society University - Computer Science" src="https://img.shields.io/badge/Progress-kyaruwo-violet.svg">
 </a>
 
+<br/><br/>
+
 <img alt="learning_curve" src="learning_curve.jpeg">
