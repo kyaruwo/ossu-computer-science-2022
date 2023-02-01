@@ -266,7 +266,7 @@ def calculate_handlen(hand):
     """
     Returns the length (number of letters) in the current hand.
 
-    hand: dictionary (string-> int)
+    hand: dictionary (string -> int)
     returns: integer
     """
     sum = 0
@@ -368,7 +368,7 @@ def play_hand(hand, word_list):
 def get_new_letter(letter):
     """
     letter : string
-    returns: new_letter (string)
+    returns: string
     """
     return random.choice(string.ascii_lowercase)
 
@@ -405,6 +405,16 @@ def substitute_hand(hand, letter):
             break
 
     return sub_hand
+
+
+def deal_display_hand():
+    """
+    returns: dictionary (string -> int)
+    """
+    hand = deal_hand(HAND_SIZE)
+    print("Current Hand:", end=' ')
+    display_hand(hand)
+    return hand
 
 
 def askYN(question):
@@ -449,34 +459,40 @@ def play_game(word_list):
 
     word_list: list of lowercase strings
     """
-    handCount = int(input("Enter total number of hands: ")) + 1
+    curhand = 0
+    maxhand = int(input("Enter total number of hands: "))
 
-    hands_score = 0
+    hand = deal_display_hand()
+
+    hand_score = 0
     all_hands_score = 0
 
-    sub = 0
+    canSub = True
+    canReplay = True
 
-    hand = deal_hand(HAND_SIZE)
-    for x in range(handCount):
-        if x > 0:
-            if askYN("Would you like to replay the hand?"):
-                all_hands_score -= hands_score
-            else:
-                hand = deal_hand(HAND_SIZE)
+    while curhand < maxhand:
 
-        print("Current Hand:", end=' ')
-        display_hand(hand)
+        if canSub and askYN("Would you like to substitute a letter?"):
+            letter = input("Which letter would you like to replace: ")
+            hand = substitute_hand(hand, letter)
+            canSub = False
 
-        if sub == 0:
-            if askYN("Would you like to substitute a letter?"):
-                sub += 1
-                letter = input("Which letter would you like to replace: ")
-                hand = substitute_hand(hand, letter)
+        hand_score = play_hand(hand, word_list)
+        all_hands_score += hand_score
+        curhand += 1
 
-        hands_score = play_hand(hand, word_list)
-        all_hands_score += hands_score
+        print("------------------------\n")
 
-        print("------------\n")
+        if canReplay and askYN("Would you like to replay the hand?"):
+            all_hands_score -= hand_score
+            curhand -= 1
+            canReplay = False
+            continue
+
+        hand = deal_display_hand()
+        canSub = True
+        canReplay = True
+
     print(f"Total score over all: {all_hands_score}")
 
 
