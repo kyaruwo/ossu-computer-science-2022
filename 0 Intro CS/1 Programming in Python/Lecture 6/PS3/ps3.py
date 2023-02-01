@@ -462,20 +462,23 @@ def play_game(word_list):
     curhand = 0
     maxhand = int(input("Enter total number of hands: "))
 
-    hand = deal_display_hand()
-
     hand_score = 0
     all_hands_score = 0
 
-    canSub = True
-    canReplay = True
+    Subbed = False
+    Replayed = False
 
     while curhand < maxhand:
 
-        if canSub and askYN("Would you like to substitute a letter?"):
+        if not Replayed:
+            hand = deal_display_hand()
+            Subbed = False
+            Replayed = False
+
+        if not Subbed and askYN("Would you like to substitute a letter?"):
+            Subbed = True
             letter = input("Which letter would you like to replace: ")
             hand = substitute_hand(hand, letter)
-            canSub = False
 
         hand_score = play_hand(hand, word_list)
         all_hands_score += hand_score
@@ -483,15 +486,11 @@ def play_game(word_list):
 
         print("------------------------\n")
 
-        if canReplay and askYN("Would you like to replay the hand?"):
+        if not Replayed and askYN("Would you like to replay the hand?"):
+            Replayed = True
             all_hands_score -= hand_score
             curhand -= 1
-            canReplay = False
             continue
-
-        hand = deal_display_hand()
-        canSub = True
-        canReplay = True
 
     print(f"Total score over all: {all_hands_score}")
 
@@ -501,6 +500,8 @@ def play_game(word_list):
 # Do not remove the "if __name__ == '__main__':" line - this code is executed
 # when the program is run directly, instead of through an import statement
 #
+
+
 if __name__ == '__main__':
     word_list = load_words()
     PauseClear()
