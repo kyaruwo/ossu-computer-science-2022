@@ -17,7 +17,7 @@ except:
 #
 # Name          : kyaruwo
 # Collaborators : me
-# Time spent    : 2023/01/23 - 2023/??/??
+# Time spent    : 2023/01/23 - 2023/02/01
 
 import math
 import random
