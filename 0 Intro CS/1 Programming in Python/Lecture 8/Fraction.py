@@ -4,7 +4,7 @@ sys("cls")
 
 class Fraction(object):
     def __init__(self, numerator, denominator):
-        Fraction.__isValid(numerator, denominator)
+        Fraction.isValid(numerator, denominator)
         self.num = numerator
         self.denom = denominator
 
@@ -14,13 +14,13 @@ class Fraction(object):
     def __add__(self, other):
         top = self.num*other.denom + self.denom*other.num
         bot = self.denom*other.denom
-        fraction = Fraction.__simplify(top, bot)
+        fraction = Fraction.simplify(top, bot)
         return fraction
 
     def __sub__(self, other):
         top = self.num*other.denom - self.denom*other.num
         bot = self.denom*other.denom
-        fraction = Fraction.__simplify(top, bot)
+        fraction = Fraction.simplify(top, bot)
         return fraction
 
     def __float__(self):
@@ -28,18 +28,16 @@ class Fraction(object):
 
     # methods
 
-    # methods are public by default
     def inverse(self):
         return Fraction(self.denom, self.num)
 
-    # by adding two underscore (__) the method becomes private
-    def __simplify(top, bot):
+    def simplify(top, bot):
         while top % 2 == 0 and bot % 2 == 0:
             top //= 2
             bot //= 2
         return Fraction(top, bot)
 
-    def __isValid(num, denom):
+    def isValid(num, denom):
         assert type(num) == int, "integer only"
         assert type(denom) == int, "integer only"
 
