@@ -26,5 +26,6 @@ class Animal(object):
 class Cat(Animal):
     pass
 
+
 # 23:00
 # https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-9-python-classes-and-inheritance/
