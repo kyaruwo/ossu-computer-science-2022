@@ -24,6 +24,12 @@ class Coordinate(object):
         distance = (x_diff_sq + y_diff_sq)**0.5
         return distance
 
+    def get_x(self):
+        return self.x
+
+    def get_y(self):
+        return self.y
+
 
 origin = Coordinate(0, 0)
 coord = Coordinate(42, 69)
@@ -33,8 +39,8 @@ print("origin :", origin)
 print("coord :", coord)
 
 # accessing attributes
-print("origin :", origin.x, origin.y)
-print("coord :", coord.x, coord.y)
+print("origin :", origin.get_x(), origin.get_y())
+print("coord :", coord.get_x(), coord.get_y())
 
 
 # conventional way
