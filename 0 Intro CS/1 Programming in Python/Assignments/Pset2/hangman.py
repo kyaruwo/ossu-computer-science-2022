@@ -3,7 +3,7 @@ try:
     import os
     def clear(): os.system("cls")
     clear()
-    os.chdir("0 Intro CS/1 Programming in Python/Lecture 4/Pset2")
+    os.chdir("0 Intro CS/1 Programming in Python/Assignments/Pset2")
 except:
     pass
 

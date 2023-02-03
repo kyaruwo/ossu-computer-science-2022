@@ -5,7 +5,7 @@ try:
     def pause(): os.system("pause")
     def PauseClear(): pause(), clear()
     clear()
-    os.chdir("0 Intro CS/1 Programming in Python/Lecture 6/PS3")
+    os.chdir("0 Intro CS/1 Programming in Python/Assignments/Pset3")
 except:
     pass
 
