@@ -24,30 +24,22 @@ def get_permutations(sequence):
     a different order than what is listed here.
     '''
 
-    # https://youtu.be/TnZHaH9i6-0
-
-    def swap(seq: str, x: int, y: int):
-        """
-        swap index x and y values in a string
-        """
-        seq = list(seq)
-        temp = seq[y]
-        seq[y] = seq[x]
-        seq[x] = temp
-        return "".join(seq)
-
-    def calculate(seq: str, left: int, right: int):
-        if left == right:
-            return [seq]
-
-        permutations = []
-        for i in range(left, right):
-            seqswap = swap(seq, left, i)
-            permutations += calculate(seqswap, left+1, right)
-        return sorted(permutations)
+    # https://github.com/andyshen55/MITx6.0001/blob/c8e17bbd6ae3113cff135557efd9054eb674e586/ps4/ps4a.py
 
     seqlen = len(sequence)
-    return calculate(sequence, 0, seqlen)
+
+    # base case
+    if seqlen == 1:
+        return sequence
+
+    # recursive case
+    res = []
+    for letter in sequence:
+        permutations = get_permutations(sequence.replace(letter, ''))
+        for perm in permutations:
+            res += [letter + perm]
+
+    return res
 
 
 if __name__ == '__main__':
