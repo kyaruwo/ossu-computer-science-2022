@@ -35,7 +35,7 @@ def get_permutations(sequence):
     # recursive case
     res = []
     for letter in sequence:
-        permutations = get_permutations(sequence.replace(letter, ''))
+        permutations = get_permutations(sequence.replace(letter, ""))
         for perm in permutations:
             res += [letter + perm]
 
