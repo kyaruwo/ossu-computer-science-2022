@@ -1,7 +1,7 @@
 # Problem Set 4A
 # Name: kyaruwo
 # Collaborators: me
-# Time Spent: 2023/??/?? - 2023/??/??
+# Time Spent: 2023/02/03 - 2023/??/??
 
 def get_permutations(sequence):
     '''
@@ -22,8 +22,9 @@ def get_permutations(sequence):
     Note: depending on your implementation, you may return the permutations in
     a different order than what is listed here.
     '''
+    seqlen = len(sequence)
 
-    pass  # delete this line and replace with your code here
+    # pain
 
 
 if __name__ == '__main__':
@@ -37,4 +38,23 @@ if __name__ == '__main__':
     #    to be three characters or fewer as you will have n! permutations for a
     #    sequence of length n)
 
-    pass  # delete this line and replace with your code here
+    from os import system as sys
+    sys("cls")
+
+    seq = 'abc'
+    print('Input:', seq)
+    print('Expected Output:', ['abc', 'acb', 'bac', 'bca', 'cab', 'cba'])
+    permutations = get_permutations(seq)
+    print(f" Actual Output : {permutations}\n")
+
+    seq = 'xyz'
+    print('Input:', seq)
+    print('Expected Output:', ['xyz', 'xzy', 'yxz', 'zxy', 'yzx', 'zxy'])
+    permutations = get_permutations(seq)
+    print(f" Actual Output : {permutations}\n")
+
+    seq = 'def'
+    print('Input:', seq)
+    print('Expected Output:', ['def', 'dfe', 'edf', 'fde', 'efd', 'fed'])
+    permutations = get_permutations(seq)
+    print(f" Actual Output : {permutations}\n")
