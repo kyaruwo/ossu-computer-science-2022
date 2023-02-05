@@ -49,6 +49,7 @@ def get_permutations(sequence):
             res += [letter + perm]
 
     return res
+    # understand this shit before doing ps4b
 
 
 if __name__ == '__main__':
