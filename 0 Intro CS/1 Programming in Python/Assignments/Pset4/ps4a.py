@@ -1,3 +1,12 @@
+# vscode my beloved
+try:
+    import os
+    os.system("cls")
+    os.chdir("0 Intro CS/1 Programming in Python/Assignments/Pset4")
+except:
+    pass
+
+
 # Problem Set 4A
 # Name: kyaruwo
 # Collaborators: me
@@ -52,9 +61,6 @@ if __name__ == '__main__':
     #    # Put three example test cases here (for your sanity, limit your inputs
     #    to be three characters or fewer as you will have n! permutations for a
     #    sequence of length n)
-
-    from os import system as sys
-    sys("cls")
 
     seq = 'abc'
     print('Input:', seq)

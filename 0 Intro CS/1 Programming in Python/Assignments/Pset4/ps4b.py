@@ -1,3 +1,12 @@
+# vscode my beloved
+try:
+    import os
+    os.system("cls")
+    os.chdir("0 Intro CS/1 Programming in Python/Assignments/Pset4")
+except:
+    pass
+
+
 # Problem Set 4B
 # Name: kyaruwo
 # Collaborators: me
