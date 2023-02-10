@@ -10,7 +10,7 @@ except:
 # Problem Set 4A
 # Name: kyaruwo
 # Collaborators: me
-# Time Spent: 2023/02/03 - 2023/??/??
+# Time Spent: 2023/02/03 - 2023/02/??
 
 
 def get_permutations(sequence):
